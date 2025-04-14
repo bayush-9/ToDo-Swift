@@ -18,6 +18,7 @@ struct ToDoForm: View {
     @FocusState private var isFocused: Bool
     
     func writeData(){
+        let dataGateway = DataGateway(taskState:taskListState);
         id = taskListState.taskList.count + 1;
         
         let tag = isImportant == true ? Importance.important : Importance.unimportant;
@@ -26,7 +27,7 @@ struct ToDoForm: View {
         oldArray.append(newTask)
         taskListState.taskList = oldArray
         
-        let dataGateway = DataGateway(taskState:taskListState);
+    
         dataGateway.writeData(oldArray)
         
         bottomSheetPosition = .hidden;
